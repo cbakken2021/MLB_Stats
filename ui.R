@@ -8,26 +8,9 @@ navbarPage(
   # First bar: Yearly Statistics
   tabPanel("Yearly Statistics",
            sidebarPanel(
-             radioButtons("team_bar1", label = h3("Team"),
-                          choices = list("ANA" = 1, "ARI" = 2, "ATL" = 3, 
-                                         "BAL" = 4, "BOS" = 5, "BRO" = 6,
-                                         "BSN" = 7, "CAL" = 8, "CHA" = 9,
-                                         "CHN" = 10, "CIN" = 11, "CLE" = 12,
-                                         "COL" = 13, "DET"= 14, "FLO" = 15,
-                                         "HOU" = 16, "KC1"= 17, "KCA" = 18,
-                                         "LAA"= 19, "LAN" = 20, "MIA" = 21,
-                                         "MIL" = 22, "MIN" = 23, "ML4" = 24,
-                                         "MON" = 25, "NYA" = 26, "NYN" = 27,
-                                         "OAK" = 28, "PHA" = 29, "PHI" = 30,
-                                         "PIT" = 31, "SDN" = 32, "SE1" = 33,
-                                         "SEA" = 34, "SFN" = 35, "SLA" = 36,
-                                         "SLN" = 37, "TBA" = 38, "TEX" = 39,
-                                         "TOR" = 40, "WAS" = 41, "WS1" = 42,
-                                         "WS2" = 43
-                                         ), 
-                          selected = 1),
+             selectizeInput("variable_bar1", h3("Select Player(s)"), choices = NULL, multiple = TRUE),
              sliderInput("yr_bar1", h3("Year Range:"),
-                         min = 1951, max = 2020, value = c(2000:2001)),
+                         min = 1951, max = 2020, value = c(1990,2010)),
              actionButton("action_bar1", "Update")
              #submitButton("Update")
            ),

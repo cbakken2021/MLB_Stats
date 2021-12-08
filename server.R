@@ -1,22 +1,24 @@
 source("global.R")
-
 server = function(input, output, session) {
-# 
-# 
-#   # First Bar
-#   dataInput_bar1<- eventReactive(input$action_bar1,{
-#     source("functions/Title_Search_Bar1.R")
-#     Title_Search_fun(input$gender_bar1, input$yr_range_bar1[1], input$yr_range_bar1[2], input$player_name_bar1)
-#   })
-# 
-#   output$Message_bar1<- renderText({
-#     paste(dataInput_bar1()[[1]])
-#   })
-# 
-#   output$Stat_Table_bar1 <- renderTable({
-#     dataInput_bar1()[[2]]
-#   })
-#   # Second Bar
+  #First Bar
+  
+  observe({
+    source("function/LoadData.R")
+    player_names <- LoadNames()
+    updateSelectizeInput(session, "variable_bar1", choices = player_names, server = TRUE)
+  })
+  dataInput_bar1<- eventReactive(input$action_bar1,{
+    source("function/DescriptiveStatistics.R")
+    DescriptiveStatistics(input$variable_bar1, input$yr_bar1[1], input$yr_bar1[2])
+  })
+  # output$Message_bar1<- renderText({
+  #   paste(dataInput_bar1()[[1]])
+  # })
+  
+  output$Stat_Table_bar1 <- renderTable({
+    dataInput_bar1()
+  })
+    #   # Second Bar
 #   dataInput_bar2<- eventReactive(input$action_bar2,{
 #     source("functions/Player_Yr_Summary.R")
 #     Player_yr_summary(input$gender_bar2, input$yr_bar2, input$player_name_bar2)

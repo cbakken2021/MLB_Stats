@@ -1,2 +1,2 @@
 # MLB_Stats
-this is my project
+The purpose of this project is to see the evolution of baseball through statistics
