@@ -3,16 +3,15 @@ library(shinythemes)
 
 shinythemes::themeSelector()
 navbarPage(
-  theme = shinytheme("darkly"),
+  theme = shinytheme("spacelab"),
   "Collin's MLB Statistics",
   # First bar: Yearly Statistics
   tabPanel("Yearly Statistics",
            sidebarPanel(
-             selectizeInput("variable_bar1", h3("Select Player(s)"), choices = NULL, multiple = TRUE),
+             selectizeInput("variable_bar1", h3("Select Player(s)"), choices=NULL, multiple=TRUE),
              sliderInput("yr_bar1", h3("Year Range:"),
-                         min = 1951, max = 2020, value = c(1990,2010)),
+                         min = 1951, max = 2020, value = c(1970,1972)),
              actionButton("action_bar1", "Update")
-             #submitButton("Update")
            ),
            mainPanel(
              textOutput("Message_bar1"),
@@ -21,37 +20,36 @@ navbarPage(
   ),
   # Second bar: Statistical Summary
   tabPanel("Statistical Summary",
-           selectizeInput("stats_bar1", h3("Select Stat"),
-                          choices = NULL, multiple = FALSE),
-             selectInput('yr_bar2', h3('Year'),
-                         choices = c(1968:2015), selectize = FALSE),
-             textInput("player_name_bar2", h3("Player's Name"), "Rafael Nadal"),
-             actionButton("action_bar2", "Update"),
+           sidebarPanel(
+             selectizeInput("variable_bar2", h3("Select Team(s)"), choices=NULL, multiple=TRUE),
+             sliderInput("yr_bar2", h3("Year Range:"),
+                         min = 1951, max = 2020, value = c(1951,2020)),
+             selectizeInput("variable_plot2x", h3("Select Variable 1"), choices=NULL, selected=NULL),
+             selectInput("variable_plot2y", h3("Select Variable 2"), choices=NULL, selected=NULL),
+             selectInput("variable_plot2z", h3("Select Variable 3 (optional)"), choices=NULL, selected=NULL),
+             actionButton("action_bar2", "Update")
+           ),
            mainPanel(
              textOutput("Message_bar2"),
-             tableOutput("Stat_Table_bar2")
+             plotOutput("Plot_2a")
            )
   ),
-  # Third bae: Championship Search
-  tabPanel("Championship Search",
+  # Third bar: Regression Analysis
+  tabPanel("Regression Analysis",
            sidebarPanel(
-             radioButtons("gender_bar3", label = h3("Gender"),
-                          choices = list("Men" = 1, "Women" = 2), 
-                          selected = 1),
-             selectInput("yr_bar3", h3("Year"),
-                         choices = c(1968:2015), selectize = FALSE),
-             #selectInput("tourney_bar3", h3("Select Tourney"),
-             #                choices = NULL),
-             selectizeInput("tourney_bar3", h3("Select Tourney(s)"),
-                            choices = NULL, multiple = TRUE),
+             selectizeInput("response_bar3", h3("Select Response"), choices=NULL, selected=NULL),
+             selectizeInput("predictor_bar3", h3("Select Predictor(s)"), choices=NULL, selected=NULL, multiple=TRUE),
              actionButton("action_bar3", "Update")
              
            ),
            mainPanel(
-             tableOutput("Stat_Table_bar3")
+             verbatimTextOutput("Message_bar3"),
+             plotOutput("Plot_bar3")
              
            )
            
   )
   
 )
+  
+         
