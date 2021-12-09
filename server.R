@@ -75,6 +75,9 @@ server = function(input, output, session) {
   output$Plot_bar3 <- renderPlot({
     dataInput3()[[1]]
   })
+  output$Text_bar3<- renderText({
+    dataInput3()[[3]]
+  })
 }
 
 

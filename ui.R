@@ -43,6 +43,7 @@ navbarPage(
              
            ),
            mainPanel(
+             textOutput("Text_bar3"),
              verbatimTextOutput("Message_bar3"),
              plotOutput("Plot_bar3")
              
