@@ -1,10 +1,12 @@
 # MLB_Stats
 
-The purpose of this project is to see the evolution of baseball through statistics as well as evaluate individual players, teams, and leagues through time.
+The purpose of this project is to see the evolution of baseball through statistics as well as evaluate individual players, teams, and leagues through time. Below is the final R code to access the application (to run locally through R), followed by a web link to access the application.
 
 runGitHub("MLB_Stats", "cbakken2021", ref = "main")
 
 https://cbakken2021.shinyapps.io/mlb_stats/
+
+A useful link for a walkthrough of the application can be found here - https://github.com/cbakken2021/MLB_Stats/blob/main/MLB_Stats%20Instructions.pdf
 
 The dataset used includes baseball statistics from 1871-2020, but has been filtered to only include data from 1951-2020 (many statistics were not recorded in early years, so the outlying years were excluded). 
 
