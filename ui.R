@@ -39,13 +39,15 @@ navbarPage(
            sidebarPanel(
              selectizeInput("response_bar3", h3("Select Response"), choices=NULL, selected=NULL),
              selectizeInput("predictor_bar3", h3("Select Predictor(s)"), choices=NULL, selected=NULL, multiple=TRUE),
+             textInput("unknown_bar3", h5("Enter comma separated values for respones to use in prediction (optional):")),
              actionButton("action_bar3", "Update")
              
            ),
            mainPanel(
              textOutput("Text_bar3"),
              verbatimTextOutput("Message_bar3"),
-             plotOutput("Plot_bar3")
+             plotOutput("Plot_bar3"),
+             textOutput("Prediction_bar3")
              
            )
            

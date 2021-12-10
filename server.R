@@ -65,18 +65,21 @@ server = function(input, output, session) {
   
   dataInput3<- eventReactive(input$action_bar3, {
     source("functions/Regression.R")
-    RunRegression(input$response_bar3, input$predictor_bar3)
+    RunRegression(input$response_bar3, input$predictor_bar3, input$unknown_bar3)
   })
-  
+  output$Text_bar3<- renderText({
+    dataInput3()[[1]]
+  })
   output$Message_bar3<- renderPrint({
     dataInput3()[[2]]
   })
   
   output$Plot_bar3 <- renderPlot({
-    dataInput3()[[1]]
-  })
-  output$Text_bar3<- renderText({
     dataInput3()[[3]]
+  })
+  
+  output$Prediction_bar3<- renderText({
+    dataInput3()[[4]]
   })
 }
 
